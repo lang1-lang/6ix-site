@@ -1,0 +1,56 @@
+<style>
+  :root {
+    --ink:     #0A0E1F;
+    --ink-2:   #111827;
+    --ink-3:   #1E1B4B;
+    --muted:   #6B7280;
+    --muted-2: #9CA3AF;
+    --white:   #FFFFFF;
+    --violet-1: #8B5CF6;
+    --violet-2: #A855F7;
+    --magenta:  #FF3DA8;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 13px 26px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: filter 0.15s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(180deg, var(--violet-2) 0%, var(--violet-1) 100%);
+    box-shadow: 0 4px 14px -4px rgba(139, 92, 246, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.08);
+  }
+
+  .btn-secondary {
+    background: var(--ink-2);
+  }
+
+  .btn-secondary:hover {
+    filter: brightness(1.06);
+  }
+</style>
+
+<div class="hero-ctas">
+  <button class="btn-primary">Free Audit</button>
+  <button class="btn-secondary">Learn More</button>
+</div>

@@ -1,0 +1,217 @@
+# Agent Prompts — Hero Build
+
+One prompt per agent. Each prompt is copy-paste ready. Run Cards 1–9 in parallel, then Card 10 last.
+
+**Plan file path (referenced in every prompt):**
+`./HERO_BUILD_PLAN.md`
+
+**Output convention:**
+- Cards 1–9 write a fragment to `./parts/card_N.html` containing `<style>` + HTML markup.
+- Card 10 reads all fragments and produces `./hero.html`.
+
+**Rules every agent follows:**
+1. Read CARD 0 in the plan file before doing anything else.
+2. Read only your assigned card.
+3. Use the CSS variables from CARD 0 — do not hardcode hex codes outside the `:root` block.
+4. Inline all SVGs. No external icon libraries.
+5. No JS unless the card explicitly requires it.
+6. After writing the fragment, re-read it once and verify every acceptance criterion in your card.
+
+---
+
+## Agent 1 — Background Layer
+
+```
+You are building the background layer for an agency hero page.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 1.
+2. Build the full-bleed background: image layer, dark overlay, diagonal light-ray overlay, vignette.
+3. Write a fragment to ./parts/card_1.html containing:
+   - A <style> block with .hero-bg, .hero-bg-overlay, .hero-bg-flare, .hero-bg-vignette
+   - The four <div> tags in the order they appear in CARD 10's semantic structure
+4. Use the exact Unsplash URL from CARD 1. If you cannot reach it, leave the URL and add a TODO comment.
+5. Verify every CARD 1 acceptance criterion before finishing.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 2 — Navigation Bar
+
+```
+You are building the top navigation bar for an agency hero page.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 2.
+2. Build a transparent nav with three zones: left logo slot, center links, right Contact Us button.
+3. The left logo slot must contain a placeholder comment <!-- BRAND_MARK_SLOT --> that Card 3's agent will fill. Do not build the brand mark yourself.
+4. Write a fragment to ./parts/card_2.html containing:
+   - A <style> block with .hero-nav and child classes
+   - The <nav> markup
+5. Use the container max-width and padding from CARD 0.
+6. Verify every CARD 2 acceptance criterion before finishing.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 3 — Brand Mark
+
+```
+You are building the "Alter" brand mark (diamond SVG + wordmark).
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 3.
+2. Build a reusable lockup: inline SVG (28×28) + "Alter" wordmark, side by side.
+3. Use the paste-ready SVG in CARD 3 as a starting point. Tune until the silhouette reads as a folded diamond.
+4. Write a fragment to ./parts/card_3.html containing:
+   - A <style> block with .brand-mark, .brand-mark svg, .brand-mark-text
+   - A <div class="brand-mark"> containing the SVG and the wordmark
+5. The lockup will be inserted into the nav slot AND inside the icon badge (Card 4). Make sure it scales cleanly from 28px to 32px without breaking.
+6. Verify every CARD 3 acceptance criterion before finishing.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 4 — Icon Badge + Magenta Beam
+
+```
+You are building the floating white icon badge with the magenta light beam behind it.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 4.
+2. Build:
+   - A 72×72 white rounded square containing the Card 3 brand-mark SVG (sized 32×32, dark fill only).
+   - Two stacked beam <div>s positioned behind the badge: inner (8px) and halo (24px).
+3. The brand-mark SVG to embed inside the badge is the same SVG from CARD 3 — paste it inline; do not depend on Card 3's fragment.
+4. Write a fragment to ./parts/card_4.html containing:
+   - A <style> block with .hero-icon-wrap, .hero-icon-badge, .hero-icon-beam-inner, .hero-icon-beam-halo
+   - The wrapper markup
+5. Verify every CARD 4 acceptance criterion before finishing — pay special attention to z-index (beam behind, badge in front) and beam vertical alignment with the CN Tower position.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 5 — Headline
+
+```
+You are building the hero headline.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 5.
+2. Build an <h1 class="hero-headline"> with "Dominate" then a <br> then "Your Market."
+3. Apply the type spec from CARD 5 and the responsive breakpoints.
+4. Write a fragment to ./parts/card_5.html containing:
+   - A <style> block with .hero-headline and the three @media breakpoints
+   - The <h1> markup
+5. Verify every CARD 5 acceptance criterion before finishing — especially that the period after "Market" is preserved.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 6 — Subheadline
+
+```
+You are building the hero subheadline.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 6.
+2. Build a <p class="hero-sub"> with the exact CARD 6 text. Use a real em dash (—), not a hyphen.
+3. Apply the type spec and max-width from CARD 6.
+4. Write a fragment to ./parts/card_6.html containing:
+   - A <style> block with .hero-sub
+   - The <p> markup
+5. Verify every CARD 6 acceptance criterion before finishing.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 7 — CTA Button Pair
+
+```
+You are building the two hero CTA buttons.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 7.
+2. Build:
+   - A flex row container .hero-ctas
+   - "Free Audit" button — gradient background, shadow, inner highlight, hover brightness
+   - "Learn More" button — solid --ink-2, hover lighten
+3. Both buttons must match height exactly and share padding/radius.
+4. Write a fragment to ./parts/card_7.html containing:
+   - A <style> block with .hero-ctas, .btn-primary, .btn-secondary
+   - The container + button markup
+5. Verify every CARD 7 acceptance criterion before finishing — gradient must be visible on Free Audit.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 8 — Trust Line
+
+```
+You are building the trust-line text under the CTAs.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 8.
+2. Build a <p class="hero-trust"> with the exact CARD 8 text.
+3. Write a fragment to ./parts/card_8.html containing:
+   - A <style> block with .hero-trust
+   - The <p> markup
+4. Verify every CARD 8 acceptance criterion before finishing.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 9 — Logo Strip
+
+```
+You are building the grayscale logo strip of 5 fake client wordmarks.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 9.
+2. Build a flex row .hero-logos containing 5 lockups in this exact order:
+   Asterisk (sparkle glyph + wordmark), Oasis (wordmark only), Ebooks (book glyph + wordmark), Opal (lens glyph + wordmark), Dunlir (crescent glyph + wordmark)
+3. All 5 inline SVGs you create must be 18×18, single-color --muted-2, no fills outside the color token.
+4. Write a fragment to ./parts/card_9.html containing:
+   - A <style> block with .hero-logos, .logo-lockup, .logo-text
+   - The container + 5 lockup markup blocks
+5. Apply the flex-wrap fallback for narrow viewports per CARD 9.
+6. Verify every CARD 9 acceptance criterion before finishing — uniform baseline, single grayscale color.
+
+Do not include the <html>, <head>, or <body> tags — fragment only.
+```
+
+---
+
+## Agent 10 — Assembler (run LAST)
+
+```
+You are assembling the final hero.html file from 9 fragments produced by other agents.
+
+1. Read ./HERO_BUILD_PLAN.md — focus on CARD 0 and CARD 10.
+2. Read all 9 fragments at ./parts/card_1.html through ./parts/card_9.html.
+3. Produce ./hero.html as a single valid HTML5 document:
+   - <head> includes <meta charset>, viewport meta, Google Fonts <link> for Inter, and a single consolidated <style> block.
+   - The <style> block starts with the CARD 0 :root variables, then concatenates every fragment's CSS (deduplicate any rules that appear identically across fragments).
+   - <body> contains one <section class="hero"> built per CARD 10's semantic structure, pasting each fragment's markup in the correct slot.
+   - Replace the <!-- BRAND_MARK_SLOT --> placeholder in card_2 with the brand-mark markup from card_3.
+4. Apply the layout rules from CARD 10: .hero positioning, .hero-content flex stack, vertical rhythm gaps, z-index map.
+5. Add the <body> base reset: margin: 0, font-family from CARD 0, antialiasing.
+6. Open the file mentally and walk through every acceptance criterion from every card you can verify by reading the markup. Fix anything broken before finishing.
+7. Add a <!-- TODO: mobile nav --> comment where CARD 10 mentions the hamburger.
+
+Final deliverable: ./hero.html — a single self-contained file that opens correctly in a browser.
+```
+
+---
+
+## Execution order
+
+1. Parallel: Agents 1, 2, 3, 4, 5, 6, 7, 8, 9.
+2. Sequential: Agent 10 after all others finish.

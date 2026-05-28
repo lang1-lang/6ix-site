@@ -1,0 +1,97 @@
+<style>
+  :root {
+    --ink:     #0A0E1F;
+    --ink-2:   #111827;
+    --ink-3:   #1E1B4B;
+    --muted:   #6B7280;
+    --muted-2: #9CA3AF;
+    --white:   #FFFFFF;
+    --violet-1: #8B5CF6;
+    --violet-2: #A855F7;
+    --magenta:  #FF3DA8;
+    --overlay:  rgba(8,10,20,0.40);
+    --container-max: 1200px;
+    --container-pad: 32px;
+  }
+
+  .nav-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: transparent;
+    font-family: Inter, "Geist", system-ui, sans-serif;
+  }
+
+  .nav-inner {
+    max-width: var(--container-max);
+    padding: 24px var(--container-pad);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--ink);
+  }
+
+  .nav-cta {
+    background: var(--ink-3);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+
+  .nav-cta:hover {
+    filter: brightness(1.06);
+  }
+</style>
+
+<nav class="nav-bar" aria-label="Main navigation">
+  <div class="nav-inner">
+
+    <!-- BRAND_MARK_SLOT -->
+    <div class="nav-brand"></div>
+
+    <ul class="nav-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Changelog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+    <button class="nav-cta" type="button">Contact Us</button>
+
+  </div>
+</nav>
